@@ -1,13 +1,10 @@
 const { ObjectId } = require("mongodb");
+
 class ContactService {
     constructor(client) {
         this.Contact = client.db().collection("contacts");
     }
-// Định nghĩa các phương thức truy xuất CSDL sử dụng mongodb API
-}
-module.exports = ContactService;
 
-class ContactService {
     // Định nghĩa các phương thức truy xuất CSDL sử dụng mongodb API
     extractConactData(payload) {
         const contact = {
@@ -32,6 +29,8 @@ class ContactService {
             { $set: { favorite: contact.favorite === true } },
             { returnDocument: "after", upsert: true }
         );
-        return result.value;
+        return result;
     }
 }
+
+module.exports = ContactService;
