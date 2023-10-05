@@ -5,7 +5,7 @@
     "mongodb": "^6.1.0"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "server.js"
   },
   "name": "contactbook-backend",
   "version": "1.0.0",
