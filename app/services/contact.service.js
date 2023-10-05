@@ -1,8 +1,10 @@
 const { ObjectId } = require("mongodb");
+
 class ContactService {
   constructor(client) {
     this.Contact = client.db().collection("contacts");
   }
+
   // Định nghĩa các phương thức truy xuất CSDL sử dụng mongodb API
   extractConactData(payload) {
     const contact = {
@@ -12,12 +14,14 @@ class ContactService {
       phone: payload.phone,
       favorite: payload.favorite,
     };
+
     // Remove undefined fields
     Object.keys(contact).forEach(
       (key) => contact[key] === undefined && delete contact[key]
     );
     return contact;
   }
+  
   async create(payload) {
     const contact = this.extractConactData(payload);
     const result = await this.Contact.findOneAndUpdate(
